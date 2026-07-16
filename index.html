@@ -60,7 +60,7 @@
         /* Mobile Responsive Optimizations */
 @media (max-width: 480px) {
   body {
-    padding: 8px 0; 
+    padding: 8px 4px;
     justify-content: flex-start;
   }
 
@@ -69,65 +69,65 @@
     margin: 4px 0;
   }
 
-  /* Let flexbox calculate the exact available space for both boards */
+  /* The magic switch: Stack the boards vertically */
   .boards-container {
     display: flex !important;
-    flex-direction: row !important;
-    width: 100vw; 
-    max-width: 100%;
-    gap: 3vw; /* Dynamic gap that scales with the screen */
-    padding: 0 4vw; /* Keep the boards off the extreme edges of the screen */
-    box-sizing: border-box;
-    justify-content: center;
-  }
-
-  .board-container {
-    flex: 1; /* Forces both boards to take up exactly 50% of the allowed space */
-    min-width: 0; /* Prevents the grid from blowing out the container width */
-  }
-
-  .board-container h2 {
-    font-size: 0.85rem;
-    margin-bottom: 6px;
-  }
-
-  /* Force the grid to auto-size its columns evenly using fractions (1fr) */
-  .board-container > div {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 3px !important; 
+    flex-direction: column !important;
+    align-items: center;
+    gap: 16px; 
     width: 100%;
   }
 
-  /* Tell the tiles to be responsive squares instead of hard-coded pixels */
+  /* Constrain the max width so the tiles don't get too tall on long screens */
+  .board-container {
+    width: 100%;
+    max-width: 260px; 
+  }
+
+  .board-container h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  /* Standard 5-column fluid grid */
+  .board-container > div {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 5px !important; 
+    width: 100%;
+  }
+
+  /* Crisp, responsive squares */
   .tile {
-    width: 100% !important; 
-    height: auto !important; 
-    aspect-ratio: 1 / 1 !important; /* Locks the tiles into perfect squares */
-    font-size: 4.5vw !important; /* Scales the font size perfectly with the screen */
-    border-width: 1px !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    font-size: 1.5rem !important; /* Back to a larger, readable font */
+    border-width: 2px !important;
     box-sizing: border-box !important;
-    margin: 0 !important; 
+    margin: 0 !important;
   }
 
   /* Keyboard adjustments */
   .keyboard {
-    gap: 4px;
+    gap: 5px;
     width: 100%;
+    max-width: 100%;
     padding: 0 4px;
-    box-sizing: border-box;
     margin-top: 8px;
+    box-sizing: border-box;
   }
 
   .keyboard-row {
-    gap: 3px;
+    gap: 4px;
   }
 
   .key {
-    height: 48px; 
+    height: 48px;
     font-size: 0.85rem;
     border-radius: 4px;
-    padding: 0; 
+    padding: 0;
   }
 }
     </style>
