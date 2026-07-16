@@ -69,7 +69,6 @@
     margin: 4px 0;
   }
 
-  /* Keep them side-by-side */
   .boards-container {
     display: flex !important;
     flex-direction: row !important;
@@ -84,24 +83,27 @@
   .board-container {
     flex: 1; 
     min-width: 0; 
+    /* Overrides Tailwind's items-center so the grid can stretch */
+    align-items: stretch !important; 
   }
 
   .board-container h2 {
     font-size: 0.85rem;
     margin-bottom: 6px;
+    text-align: center;
   }
 
-  /* Tighten up the vertical gaps between rows */
+  /* Force the boards and their rows to fully expand */
   #human-board, #bot-board {
+    width: 100% !important;
     gap: 4px !important;
   }
   
-  /* Tighten up the horizontal gaps between columns */
   [id^="human-row-"], [id^="bot-row-"] {
+    width: 100% !important;
     gap: 4px !important;
   }
 
-  /* CRITICAL FIX: Target the generated tiles by their IDs, not a missing class */
   [id^="human-tile-"], [id^="bot-tile-"] {
     width: 100% !important; 
     height: auto !important; 
@@ -112,7 +114,6 @@
     margin: 0 !important; 
   }
 
-  /* Keyboard adjustments */
   .keyboard {
     gap: 4px;
     width: 100%;
