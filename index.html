@@ -83,7 +83,6 @@
   .board-container {
     flex: 1; 
     min-width: 0; 
-    /* Overrides Tailwind's items-center so the grid can stretch */
     align-items: stretch !important; 
   }
 
@@ -93,9 +92,10 @@
     text-align: center;
   }
 
-  /* Force the boards and their rows to fully expand */
+  /* Consolidated Board and Row Rules */
   #human-board, #bot-board {
     width: 100% !important;
+    height: 250px !important; /* Fixed height to prevent keyboard jitter */
     gap: 4px !important;
   }
   
@@ -104,9 +104,10 @@
     gap: 4px !important;
   }
 
+  /* Consolidated Tile Rules (Uses fixed height to match grid rows) */
   [id^="human-tile-"], [id^="bot-tile-"] {
     width: 100% !important; 
-    height: auto !important; 
+    height: 32px !important; 
     aspect-ratio: 1 / 1 !important; 
     font-size: 4vw !important; 
     border-width: 1px !important;
@@ -131,6 +132,10 @@
     font-size: 0.85rem;
     border-radius: 4px;
     padding: 0; 
+  }
+  
+  .board-container:last-child h2 {
+    text-align: right !important;
   }
 }
     </style>
