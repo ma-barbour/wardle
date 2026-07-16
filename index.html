@@ -58,79 +58,63 @@
         .tile-filled { border-color: #878a8c; }
         
         /* Mobile Responsive Optimizations */
-        @media (max-width: 480px) {
-          body {
-            padding: 8px 4px;
-            justify-content: flex-start;
-          }
+@media (max-width: 480px) {
+  body {
+    padding: 8px 4px;
+    justify-content: flex-start;
+  }
 
-          h1 {
-            font-size: 1.5rem;
-            margin: 4px 0;
-          }
+  h1 {
+    font-size: 1.5rem;
+    margin: 4px 0;
+  }
 
-          /* Shrink the gap between the Human and Bot boards */
-          .boards-container {
-            gap: 8px; 
-            width: 100%;
-            justify-content: center;
-          }
+  .boards-container {
+    gap: 12px; 
+    width: 100%;
+    justify-content: center;
+  }
 
-          /* Target the grid inside the boards to reduce spacing between tiles */
-          .board-container div {
-            gap: 3px !important; 
-          }
+  /* CRITICAL FIX: Force the grid columns to shrink to exactly match the tile width */
+  .board-container > div {
+    display: grid !important;
+    grid-template-columns: repeat(5, 32px) !important;
+    gap: 4px !important; 
+    justify-content: center;
+  }
 
-          /* Shrink tiles enough to fit 10 across safely */
-          .tile {
-            width: 28px;
-            height: 28px;
-            font-size: 1rem;
-            border-width: 1px; /* Thinner border for smaller tiles */
-            box-sizing: border-box; /* Forces padding/borders to stay inside the width */
-          }
+  /* Lock the tiles tightly into their new grid cells */
+  .tile {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.2rem !important;
+    border-width: 1px;
+    box-sizing: border-box;
+    margin: 0 !important; 
+  }
 
-          .board-container h2 {
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-          }
+  .board-container h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
 
-          /* Keyboard adjustments */
-          .keyboard {
-            gap: 4px;
-            width: 100%;
-            padding: 0 2px;
-          }
+  .keyboard {
+    gap: 4px;
+    width: 100%;
+    padding: 0 4px;
+  }
 
-          .keyboard-row {
-            gap: 2px;
-          }
+  .keyboard-row {
+    gap: 4px;
+  }
 
-          .key {
-            height: 44px; 
-            font-size: 0.8rem;
-            border-radius: 3px;
-            padding: 0; /* Strip padding to maximize tap area */
-          }
-        }
-
-        /* Extra small devices (e.g., iPhone SE) */
-        @media (max-width: 360px) {
-          .tile {
-            width: 24px;
-            height: 24px;
-            font-size: 0.85rem;
-          }
-          
-          .boards-container {
-            gap: 4px;
-          }
-
-          .key {
-            height: 40px;
-            font-size: 0.75rem;
-          }
-        }
+  .key {
+    height: 48px; 
+    font-size: 0.85rem;
+    border-radius: 4px;
+    padding: 0; 
+  }
+}
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center pb-8 bg-white text-slate-900">
