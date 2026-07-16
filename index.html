@@ -60,7 +60,7 @@
         /* Mobile Responsive Optimizations */
 @media (max-width: 480px) {
   body {
-    padding: 8px 4px;
+    padding: 8px 0; 
     justify-content: flex-start;
   }
 
@@ -69,65 +69,67 @@
     margin: 4px 0;
   }
 
-  /* The magic switch: Stack the boards vertically */
+  /* Keep them side-by-side */
   .boards-container {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center;
-    gap: 16px; 
-    width: 100%;
+    flex-direction: row !important;
+    width: 100vw; 
+    max-width: 100%;
+    gap: 3vw; 
+    padding: 0 3vw; 
+    box-sizing: border-box;
+    justify-content: center;
   }
 
-  /* Constrain the max width so the tiles don't get too tall on long screens */
   .board-container {
-    width: 100%;
-    max-width: 260px; 
+    flex: 1; 
+    min-width: 0; 
   }
 
   .board-container h2 {
-    font-size: 1rem;
+    font-size: 0.85rem;
     margin-bottom: 6px;
-    text-align: center;
   }
 
-  /* Standard 5-column fluid grid */
-  .board-container > div {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 5px !important; 
-    width: 100%;
+  /* Tighten up the vertical gaps between rows */
+  #human-board, #bot-board {
+    gap: 4px !important;
+  }
+  
+  /* Tighten up the horizontal gaps between columns */
+  [id^="human-row-"], [id^="bot-row-"] {
+    gap: 4px !important;
   }
 
-  /* Crisp, responsive squares */
-  .tile {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 1 / 1 !important;
-    font-size: 1.5rem !important; /* Back to a larger, readable font */
-    border-width: 2px !important;
+  /* CRITICAL FIX: Target the generated tiles by their IDs, not a missing class */
+  [id^="human-tile-"], [id^="bot-tile-"] {
+    width: 100% !important; 
+    height: auto !important; 
+    aspect-ratio: 1 / 1 !important; 
+    font-size: 4vw !important; 
+    border-width: 1px !important;
     box-sizing: border-box !important;
-    margin: 0 !important;
+    margin: 0 !important; 
   }
 
   /* Keyboard adjustments */
   .keyboard {
-    gap: 5px;
+    gap: 4px;
     width: 100%;
-    max-width: 100%;
     padding: 0 4px;
-    margin-top: 8px;
     box-sizing: border-box;
+    margin-top: 8px;
   }
 
   .keyboard-row {
-    gap: 4px;
+    gap: 3px;
   }
 
   .key {
-    height: 48px;
+    height: 48px; 
     font-size: 0.85rem;
     border-radius: 4px;
-    padding: 0;
+    padding: 0; 
   }
 }
     </style>
